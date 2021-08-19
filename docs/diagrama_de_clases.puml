@@ -34,4 +34,14 @@ class Partido {
     
 }
 
+Partido --* Equipo: equipo local
+Partido --* Equipo: equipo visitante
+
+Cliente ---> Apuesta: realiza apuesta
+Cliente --|> Model
+Empresa --|> Model
+Equipo --|> Model
+Partido --|> Model
+
+Apuesta --> Partido: se realiza sobre
 @enduml
