@@ -1,4 +1,5 @@
 from .. import db
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Cliente(db.Model):
@@ -11,7 +12,7 @@ class Cliente(db.Model):
     def __repr__(self):
         return '<Cliente: %r %r>' % (self.__id, self.__email)
 
-    @property
+    @hybrid_property
     def id(self):
         return self.__id
 
@@ -23,7 +24,7 @@ class Cliente(db.Model):
     def id(self):
         del self.__id
 
-    @property
+    @hybrid_property
     def apellido(self):
         return self.__apellido
 
@@ -35,7 +36,7 @@ class Cliente(db.Model):
     def apellido(self):
         del self.__apellido
 
-    @property
+    @hybrid_property
     def nombre(self):
         return self.__nombre
 
@@ -47,7 +48,7 @@ class Cliente(db.Model):
     def nombre(self):
         del self.__nombre
 
-    @property
+    @hybrid_property
     def email(self):
         return self.__email
 
