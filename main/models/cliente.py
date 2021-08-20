@@ -58,24 +58,3 @@ class Cliente(db.Model):
     @email.deleter
     def email(self):
         del self.__email
-
-    def to_json(self):
-        cliente_json = {
-            'id': self.__id,
-            'apellido': self.__apellido,
-            'nombre': self.__nombre,
-            'email': self.__email,
-        }
-        return cliente_json
-
-    @staticmethod
-    def from_json(cliente_json):
-        id = cliente_json.get('id')
-        apellido = cliente_json.get('apellido')
-        nombre = cliente_json.get('nombre')
-        email = cliente_json.get('email')
-        return Cliente(id = id,
-                       apellido = apellido,
-                       nombre = nombre,
-                       email = email,
-                       )

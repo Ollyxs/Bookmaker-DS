@@ -3,13 +3,13 @@ from .. import db
 
 class Equipo(db.Model):
     __tablename__ = "equipos"
-    __id = db.Column(db.Integer, primary_key=True)
-    __nombre = db.Column(db.String(50), nullable=False)
-    __escudo = db.Column(db.String(50), nullable=False)
-    __email = db.Column(db.String(120), nullable=False)
+    __id = db.Column('id', db.Integer, primary_key=True)
+    __nombre = db.Column('nombre', db.String(50), nullable=False)
+    __escudo = db.Column('escudo', db.String(50), nullable=False)
+    __pais = db.Column('pais', db.String(120), nullable=False)
 
     def __repr__(self):
-        return '<Eqipo: %r %r>' % (self.__id, self.__email)
+        return '<Equipo: %r %r>' % (self.__id, self.__pais)
 
     @property
     def id(self):
@@ -48,13 +48,13 @@ class Equipo(db.Model):
         del self.__escudo
 
     @property
-    def email(self):
-        return self.__email
+    def pais(self):
+        return self.__pais
 
-    @email.setter
-    def email(self, email):
-        self.__email = email
+    @pais.setter
+    def pais(self, pais):
+        self.__pais = pais
 
-    @email.deleter
-    def email(self):
-        del self.__email
+    @pais.deleter
+    def pais(self):
+        del self.__pais

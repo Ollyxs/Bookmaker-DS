@@ -1,4 +1,5 @@
-from marshmallow import Schema, fields, validate
+from marshmallow import Schema, fields, validate, post_load
+from main.models import ClienteModel
 
 
 class ClienteSchema(Schema):
@@ -6,3 +7,7 @@ class ClienteSchema(Schema):
     apellido = fields.String(required=True)
     nombre = fields.String(required=True)
     email = fields.String(required=True, validate=validate.Email())
+
+    @post_load
+    def make_cliente(self, data, **kwargs):
+        return ClienteModel(**data)

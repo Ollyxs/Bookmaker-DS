@@ -22,22 +22,12 @@ def create_app():
 
     import main.controllers as resources
 
-    # api.add_resource(resources.BolsonesResource, '/bolsones')
-    # api.add_resource(resources.BolsonResource, '/bolson/<id>')
-    # api.add_resource(resources.BolsonesVentasResource, '/bolsones-venta')
-    # api.add_resource(resources.BolsonVentaResource, '/bolson-venta/<id>')
-    # api.add_resource(resources.BolsonesPendientesResource, '/bolsones-pendientes')
-    # api.add_resource(resources.BolsonPendienteResource, '/bolson-pendiente/<id>')
-    # api.add_resource(resources.BolsonesPreviosResource, '/bolsones-previos')
-    # api.add_resource(resources.BolsonPrevioResource, '/bolson-previo/<id>')
-    # api.add_resource(resources.ProductosResource, '/productos')
-    # api.add_resource(resources.ProductoResource, '/producto/<id>')
-    # api.add_resource(resources.ComprasResource, '/compras')
-    # api.add_resource(resources.CompraResource, '/compra/<id>')
     api.add_resource(resources.ClientesResource, '/clientes')
     api.add_resource(resources.ClienteResource, '/cliente/<id>')
-    # api.add_resource(resources.ProveedoresResource, '/proveedores')
-    # api.add_resource(resources.ProveedorResource, '/proveedor/<id>')
+    api.add_resource(resources.EmpresasResource, '/empresas')
+    api.add_resource(resources.EmpresaResource, '/empresa/<id>')
+    api.add_resource(resources.EquiposResource, '/equipos')
+    api.add_resource(resources.EquipoResource, '/equipo/<id>')
     api.init_app(app)
 
     return app

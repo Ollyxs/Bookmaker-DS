@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from flask import request, jsonify
+from flask import request
 from .. import db
 from main.models import ClienteModel
 from main.map import ClienteSchema
@@ -35,7 +35,7 @@ class Clientes(Resource):
         return cliente_schema.dump(clientes, many=True)
 
     def post(self):
-        cliente = ClienteModel.from_json(request.get_json())
+        cliente = cliente_schema.load(request.get_json())
         db.session.add(cliente)
         db.session.commit()
         return cliente_schema.dump(cliente), 201

@@ -3,9 +3,9 @@ from .. import db
 
 class Empresa(db.Model):
     __tablename__ = "empresas"
-    __id = db.Column(db.Integer, primary_key=True)
-    __razon_social = db.Column(db.String(50), nullable=False)
-    __email = db.Column(db.String(120), nullable=False)
+    __id = db.Column('id', db.Integer, primary_key=True)
+    __razon_social = db.Column('razon_social', db.String(50), nullable=False)
+    __email = db.Column('email', db.String(120), nullable=False)
 
     def __repr__(self):
         return '<Empresa: %r %r >' % (self.__id, self.__email)
