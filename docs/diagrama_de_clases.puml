@@ -17,13 +17,23 @@ class Equipo {
     - nombre
     - escudo
     - pais
+    - puntaje
 }
 
 
 class Apuesta {
     - id
+    - fecha
     - monto 
     - monto_minimo
+    - ganador
+}
+
+class Cuota {
+    - id
+    - probabilidad_local
+    - probabilidad_empate
+    - probabilidad_visitante
 }
 
 class Partido {
@@ -31,7 +41,10 @@ class Partido {
     - fecha
     - equipo_local
     - equipo_visitante
-    
+    - finalizado
+    - ganador
+    - goles_local
+    - goles_visitante
 }
 
 Partido --* Equipo: equipo local
