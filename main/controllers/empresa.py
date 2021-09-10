@@ -3,15 +3,16 @@ from flask import request
 from .. import db
 from main.models import EmpresaModel
 from main.map import EmpresaSchema
+from main.services import EmpresaService
 
 
 empresa_schema = EmpresaSchema()
+empresa_service = EmpresaService()
 
 
 class Empresa(Resource):
     def get(self, id):
-        empresa = db.session.query(EmpresaModel).get_or_404(id)
-        return empresa_schema.dump(empresa), 201
+        return empresa_schema.dump(empresa_service.obtener_empresa_por_id(id))
 
     def delete(self, id):
         empresa = db.session.query(EmpresaModel).get_or_404(id)
@@ -31,8 +32,7 @@ class Empresa(Resource):
 
 class Empresas(Resource):
     def get(self):
-        empresas = db.session.query(EmpresaModel).all()
-        return empresa_schema.dump(empresas, many=True)
+        return empresa_schema.dump(empresa_service.obtener_empresas(), many=True)
 
     def post(self):
         empresa = empresa_schema.load(request.get_json())

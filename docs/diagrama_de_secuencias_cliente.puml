@@ -2,6 +2,9 @@
 actor Admin
 boundary ClienteResource
 participant ClienteSchema
+participant Services
+participant ClienteService
+participant RepositorioService
 entity ClienteModel
 database data
 Admin -> ClienteResource: GET by Id (Request)
