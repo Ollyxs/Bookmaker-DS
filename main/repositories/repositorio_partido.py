@@ -1,30 +1,32 @@
+from flask.scaffold import F
 from .. import db
-from main import models
+from main.models import PartidoModel
+from .repositorio_base import Create, Read, Update, Delete
 
 
-class RepositorioService():
-    def __init__(self, modelo):
-        self.__modelo = modelo
+class PartidoRepositorio(Create, Read, Update, Delete):
+    def __init__(self):
+        self.__modelo = PartidoModel
 
-    def obtener_todos(self):
+    def find_all(self):
         objetos = db.session.query(self.__modelo).all()
         return objetos
 
-    def obtener_por_id(self, id):
+    def find_one(self, id):
         objeto = db.session.query(self.__modelo).get_or_404(id)
         return objeto
 
-    def crear(self, objeto):
+    def create(self, objeto):
         db.session.add(objeto)
         db.session.commit()
         return objeto
 
-    def eliminar(self, id):
+    def delete(self, id):
         objeto = db.session.query(self.__modelo).get_or_404(id)
         db.session.delete(objeto)
         db.session.commit()
 
-    def modificar(self, data, id):
+    def update(self, data, id):
         objeto = db.session.query(self.__modelo).get_or_404(id)
         for key, value in data:
             setattr(objeto, key, value)

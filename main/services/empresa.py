@@ -1,8 +1,8 @@
 from main.models import EmpresaModel
-from main.repositories import RepositorioService
+from main.repositories import EmpresaRepositorio
 
 
-repositorio = RepositorioService(EmpresaModel)
+repositorio = EmpresaRepositorio
 
 
 class EmpresaService():

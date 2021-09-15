@@ -8,6 +8,8 @@ class Cliente(db.Model):
     __apellido = db.Column('apellido', db.String(50), nullable=False)
     __nombre = db.Column('nombre', db.String(50), nullable=False)
     __email = db.Column('email', db.String(120), nullable=False)
+    __activado = db.Column('activado', db.Boolean, nullable=False)
+
 
     def __repr__(self):
         return '<Cliente: %r %r>' % (self.__id, self.__email)
@@ -59,3 +61,15 @@ class Cliente(db.Model):
     @email.deleter
     def email(self):
         del self.__email
+
+    @hybrid_property
+    def activado(self):
+        return self.__activado
+
+    @activado.setter
+    def activado(self, activado):
+        self.__activado = activado
+
+    @activado.deleter
+    def activado(self):
+        self.__activado
