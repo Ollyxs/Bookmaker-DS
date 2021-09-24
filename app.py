@@ -16,7 +16,7 @@ from datetime import datetime
 def load_clientes():
     fake = Faker('es_ES')
     for _ in range(10):
-        cliente = ClienteModel(nombre=fake.first_name(), apellido=fake.name(), email=fake.email())
+        cliente = ClienteModel(nombre=fake.first_name(), apellido=fake.name(), email=fake.email(), activado=fake.boolean())
         db.session.add(cliente)
         db.session.commit()
 
