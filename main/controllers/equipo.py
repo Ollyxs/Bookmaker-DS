@@ -3,14 +3,17 @@ from flask import request
 from .. import db
 from main.models import EquipoModel
 from main.map import EquipoSchema
+import logging
 
 
 equipo_schema = EquipoSchema()
+logger = logging.getLogger(__name__)
 
 
 class Equipo(Resource):
     def get(self, id):
         equipo = db.session.query(EquipoModel).get_or_404(id)
+        logger.info("Equipo: %s", equipo)
         return equipo_schema.dump(equipo), 201
 
     def delete(self, id):
