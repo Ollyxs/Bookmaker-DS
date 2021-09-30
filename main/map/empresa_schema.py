@@ -6,6 +6,7 @@ class EmpresaSchema(Schema):
     id = fields.Int(dump_only=True)
     razon_social = fields.String(required=True)
     email = fields.String(required=True, validate=validate.Email())
+    activado = fields.Boolean(required=True)
 
     @post_load
     def make_empresa(self, data, **kwargs):

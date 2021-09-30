@@ -8,7 +8,7 @@ app.app_context().push()
 
 from main import db
 from faker import Faker
-from main.models import ClienteModel, EquipoModel, CuotaModel, PartidoModel
+from main.models import ClienteModel, EmpresaModel, EquipoModel, CuotaModel, PartidoModel
 import csv
 from datetime import datetime
 
@@ -16,12 +16,18 @@ from datetime import datetime
 def load_clientes():
     fake = Faker('es_ES')
     for _ in range(10):
-        cliente = ClienteModel(nombre=fake.first_name(), apellido=fake.name(), email=fake.email(), activado=fake.boolean())
+        cliente = ClienteModel(nombre=fake.first_name(), apellido=fake.last_name(), email=fake.email(), activado=fake.boolean())
         db.session.add(cliente)
         db.session.commit()
 
     #db.session.close()
 
+def load_empresas():
+    fake = Faker('es_ES')
+    for _ in range(10):
+        empresa = EmpresaModel(razon_social=fake.name(), email=fake.email(), activado=fake.boolean())
+        db.session.add(empresa)
+        db.session.commit()
 
 def load_equipos():
     with open('./docs/equipo.csv', encoding='utf-8') as csv_file:
@@ -54,5 +60,6 @@ if __name__ == '__main__':
     db.create_all()
     load_equipos()
     load_clientes()
+    load_empresas()
     load_partidos()
     app.run(debug=True, port=os.getenv("PORT"))
