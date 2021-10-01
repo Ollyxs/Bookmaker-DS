@@ -25,7 +25,7 @@ def load_clientes():
 def load_empresas():
     fake = Faker('es_ES')
     for _ in range(10):
-        empresa = EmpresaModel(razon_social=fake.name(), email=fake.email(), activado=fake.boolean())
+        empresa = EmpresaModel(razon_social=fake.company(), email=fake.company_email(), activado=fake.boolean())
         db.session.add(empresa)
         db.session.commit()
 
